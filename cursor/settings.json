@@ -1,0 +1,214 @@
+{
+  "editor.accessibilitySupport": "off",
+  "editor.autoClosingBrackets": "always",
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit",
+  },
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.inlayHints.enabled": "offUnlessPressed",
+  "editor.inlineSuggest.enabled": true,
+  "editor.renderWhitespace": "all",
+  "editor.suggest.preview": true,
+  "editor.suggestSelection": "first",
+  "git.autofetch": true,
+  "git.enableSmartCommit": true,
+  "git.mergeEditor": true,
+  "git.showCursorWorktrees": true,
+  "jupyter.askForKernelRestart": false,
+  "security.workspace.trust.untrustedFiles": "open",
+  "svelte.enable-ts-plugin": true,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features",
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features",
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "[less]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "[mdx]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "[postcss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "[python]": {
+    "editor.formatOnType": true,
+  },
+  "[svelte]": {
+    "editor.defaultFormatter": "svelte.svelte-vscode",
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "[xml]": {
+    "editor.defaultFormatter": "DotJoshJohnson.xml",
+  },
+  "accessibility.signals.chatRequestSent": {
+    "announcement": "auto",
+    "sound": "off",
+  },
+  "accessibility.signals.chatResponseReceived": {
+    "sound": "off",
+  },
+  "accessibility.signals.clear": {
+    "announcement": "auto",
+    "sound": "off",
+  },
+  "accessibility.signals.codeActionApplied": {
+    "sound": "off",
+  },
+  "accessibility.signals.codeActionTriggered": {
+    "sound": "off",
+  },
+  "accessibility.signals.diffLineDeleted": {
+    "sound": "off",
+  },
+  "accessibility.signals.diffLineInserted": {
+    "sound": "off",
+  },
+  "accessibility.signals.diffLineModified": {
+    "sound": "off",
+  },
+  "accessibility.signals.lineHasBreakpoint": {
+    "announcement": "auto",
+    "sound": "off",
+  },
+  "accessibility.signals.lineHasError": {
+    "announcement": "auto",
+    "sound": "off",
+  },
+  "accessibility.signals.lineHasFoldedArea": {
+    "announcement": "auto",
+    "sound": "off",
+  },
+  "accessibility.signals.lineHasInlineSuggestion": {
+    "sound": "off",
+  },
+  "accessibility.signals.lineHasWarning": {
+    "announcement": "auto",
+    "sound": "off",
+  },
+  "accessibility.signals.noInlayHints": {
+    "announcement": "auto",
+    "sound": "off",
+  },
+  "accessibility.signals.notebookCellCompleted": {
+    "announcement": "auto",
+    "sound": "off",
+  },
+  "accessibility.signals.notebookCellFailed": {
+    "announcement": "auto",
+    "sound": "off",
+  },
+  "accessibility.signals.onDebugBreak": {
+    "announcement": "auto",
+    "sound": "off",
+  },
+  "accessibility.signals.positionHasError": {
+    "announcement": "auto",
+    "sound": "off",
+  },
+  "accessibility.signals.positionHasWarning": {
+    "announcement": "auto",
+    "sound": "off",
+  },
+  "accessibility.signals.progress": {
+    "announcement": "auto",
+    "sound": "off",
+  },
+  "accessibility.signals.taskCompleted": {
+    "sound": "off",
+  },
+  "accessibility.signals.taskFailed": {
+    "sound": "off",
+  },
+  "accessibility.signals.terminalBell": {
+    "announcement": "auto",
+    "sound": "off",
+  },
+  "accessibility.signals.terminalCommandFailed": {
+    "sound": "off",
+  },
+  "accessibility.signals.terminalCommandSucceeded": {
+    "sound": "off",
+  },
+  "accessibility.signals.terminalQuickFix": {
+    "announcement": "auto",
+    "sound": "off",
+  },
+  "accessibility.signals.voiceRecordingStarted": {
+    "sound": "off",
+  },
+  "accessibility.signals.voiceRecordingStopped": {
+    "sound": "off",
+  },
+  "git.confirmSync": false,
+  "security.promptForLocalFileProtocolHandling": false,
+  "diffEditor.renderSideBySide": true,
+  "cursor.general.globalCursorIgnoreList": [
+    "**/.env",
+    "**/credentials.json",
+    "**/credentials.*.json",
+    "**/secret.json",
+    "**/secrets.json",
+    "**/*.key",
+    "**/*.pem",
+    "**/*.pfx",
+    "**/*.p12",
+    "**/*.crt",
+    "**/*.cer",
+    "**/id_rsa",
+    "**/id_dsa",
+    "**/.ssh/id_*",
+  ],
+  "remote.SSH.remotePlatform": {
+    "do-droplet": "linux",
+    "do-keycloak": "linux",
+    "do-gram": "linux",
+  },
+  "[dockercompose]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.autoIndent": "advanced",
+    "editor.defaultFormatter": "redhat.vscode-yaml",
+  },
+  "[github-actions-workflow]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml",
+  },
+  "diffEditor.ignoreTrimWhitespace": false,
+  "cursor.enable_git_worktrees_setting": true,
+  "cursor.agent_layout_browser_beta_setting": true,
+  "cursor.cpp.disabledLanguages": ["plaintext"],
+  "claudeCode.preferredLocation": "panel",
+  "cursor.cpp.enablePartialAccepts": true,
+  "workbench.editorAssociations": {
+    "file:/**/*.xlsx": "jupyter-data-wrangler",
+  },
+  "explorer.confirmDragAndDrop": false,
+  "git.replaceTagsWhenPull": true,
+  "window.autoDetectColorScheme": false,
+  "vs-kubernetes": {
+    "vscode-kubernetes.helm-path-mac": "/Users/seranshanmugathas/.vs-kubernetes/tools/helm/darwin-arm64/helm",
+    "vscode-kubernetes.kubectl-path-mac": "/Users/seranshanmugathas/.vs-kubernetes/tools/kubectl/kubectl",
+    "vscode-kubernetes.minikube-path-mac": "/Users/seranshanmugathas/.vs-kubernetes/tools/minikube/darwin-arm64/minikube"
+  },
+}

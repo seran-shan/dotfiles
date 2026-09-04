@@ -1,0 +1,25 @@
+# Go tools installed with `go install`. Applied by `just tools`.
+#
+# Module paths were read from the installed binaries with `go version -m`,
+# not guessed. Versions shown are what was installed at capture time;
+# @latest is used on install so a fresh machine gets current releases.
+
+# Live reload for Go servers. Was v1.65.0.
+#
+# NOT MOVED TO HOMEBREW. A `brew install air` formula exists, but it is
+# version 0.11.0 against this tool's v1.65.0, a different project that
+# happens to share the name. Swapping would have silently installed the
+# wrong binary.
+github.com/air-verse/air@latest
+
+# Benchmark comparison tool from the Go project's perf repo.
+golang.org/x/perf/cmd/benchstat@latest
+
+# JavaScript/TypeScript static analysis. Was v0.1.0-alpha.
+github.com/ludo-technologies/jscan/cmd/jscan@latest
+
+# ─── MOVED TO HOMEBREW ───────────────────────────────────────────────────────
+# golangci-lint  ->  brew "golangci-lint"
+# gopls          ->  brew "gopls"
+# Both previously existed twice (brew + `go install`); PATH resolved to the
+# brew copies, so the go-installed duplicates were dead weight.

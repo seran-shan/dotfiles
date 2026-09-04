@@ -1,0 +1,126 @@
+# ~/.gitconfig
+#
+# Identity and anything machine-specific lives in ~/.gitconfig.local, which is
+# gitignored. See setup/gitconfig.local.example for the template. This split is the
+# pattern used by nicksp (tilde/.gitconfig:286), thoughtbot (gitconfig:28) and
+# paulirish (.gitconfig:179): a plain [include], not [includeIf].
+[include]
+	path = ~/.gitconfig.local
+
+[init]
+	defaultBranch = main
+
+[pull]
+	# Refuse to create a merge commit on pull; rebase or fast-forward only.
+	ff = only
+
+[push]
+	# Push the current branch to a same-named upstream, creating it if needed.
+	default = current
+	autoSetupRemote = true
+	followTags = true
+
+[fetch]
+	prune = true
+	pruneTags = true
+
+# ─── Diff and merge ──────────────────────────────────────────────────────────
+[core]
+	pager = delta
+	excludesfile = ~/.config/git/ignore
+
+[interactive]
+	diffFilter = delta --color-only
+
+[delta]
+	navigate = true          # n / N jump between diff hunks
+	light = false            # dark terminal background
+	line-numbers = true
+	side-by-side = false
+
+[merge]
+	# diff3 shows the common ancestor in conflict markers, not just both sides.
+	conflictstyle = diff3
+
+[diff]
+	colorMoved = default     # distinguish moved lines from added/removed
+	algorithm = histogram    # better rename and block-move detection
+
+[rerere]
+	# Remember conflict resolutions and replay them automatically.
+	enabled = true
+
+# NOTE: a `[url "git@github.com:"] insteadOf` rule was considered and rejected.
+# `gh auth login` already stores an OAuth token in the system keyring and sets
+# "Git operations protocol: https", so HTTPS never prompts for credentials.
+# Rewriting URLs to SSH would fight that configuration to solve a problem that
+# does not exist here, and would break on networks that block port 22.
+# The old `git-https-to-ssh` function is likewise not carried over.
+
+# ─── Commit signing (SSH) ────────────────────────────────────────────────────
+# SSH signing rather than GPG: your existing ~/.ssh/id_ed25519 is reused, so
+# there is no new key to generate, back up, or rotate. Requires git >= 2.34.
+#
+# One-time setup, since the key path is machine-specific it lives in
+# ~/.gitconfig.local:
+#   git config --file ~/.gitconfig.local user.signingkey ~/.ssh/id_ed25519.pub
+#   echo "$(git config user.email) namespaces=\"git\" $(cat ~/.ssh/id_ed25519.pub)" \
+#     >> ~/.config/git/allowed_signers
+# Then upload the same public key to GitHub as a SIGNING key (separate from
+# the authentication key entry) to get the Verified badge.
+[gpg]
+	format = ssh
+
+[gpg "ssh"]
+	allowedSignersFile = ~/.config/git/allowed_signers
+
+# commit.gpgsign is not set here. It lives in
+# ~/.gitconfig.local alongside user.signingkey, because the two must arrive
+# together: with gpgsign=true and no signingkey, git refuses every commit with
+#   fatal: either user.signingkey or gpg.ssh.defaultKeyCommand needs to be configured
+# Committing the flag here would leave a freshly-provisioned machine unable to
+# commit until the gitignored local file was hand-written.
+# See setup/gitconfig.local.example to enable signing.
+
+# ─── Aliases ─────────────────────────────────────────────────────────────────
+[alias]
+	# Was `!/usr/local/bin/lazygit`, an Intel Homebrew path, so this alias had
+	# been silently broken since the move to Apple Silicon. Resolved via PATH now.
+	ui = !lazygit
+
+	fpo = fetch --prune origin
+	ma = merge --abort
+
+	# Compact graph log.
+	lg = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'
+
+	st = status --short --branch
+	last = log -1 --stat
+	unstage = restore --staged
+
+	copy-diff = "!git diff | pbcopy && echo 'Copied to clipboard!'"
+
+	# Rewrite history to purge a file. Requires git-filter-repo.
+	remove-file-history = "!f() { \
+		if ! command -v git-filter-repo >/dev/null 2>&1; then \
+			echo 'Error: git-filter-repo is not installed. Install with: brew install git-filter-repo'; \
+			return 1; \
+		fi; \
+		if [ $# -eq 0 ]; then \
+			echo 'Usage: git remove-file-history <file-path>'; \
+			return 1; \
+		fi; \
+		git filter-repo --invert-paths --path \"$1\"; \
+	}; f"
+
+# ─── Git LFS ─────────────────────────────────────────────────────────────────
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+
+# NOTE: `add.interactive.useBuiltin = false` was present in the old config.
+# It was a workaround for an early Git rewrite of `add -i`; the builtin has
+# been the default and stable since 2.37, and the setting is now a no-op.
+# Dropped.

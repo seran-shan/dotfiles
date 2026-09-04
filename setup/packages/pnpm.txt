@@ -1,0 +1,7 @@
+# Global pnpm packages. Applied by `just tools`.
+#
+# Kept separate from npm.txt because pnpm maintains its own global store at
+# $PNPM_HOME (~/Library/pnpm), independent of npm's /opt/homebrew prefix.
+
+# TypeScript execute: run .ts files directly. Was v4.20.6.
+tsx

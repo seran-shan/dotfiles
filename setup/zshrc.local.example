@@ -1,0 +1,30 @@
+#!/bin/zsh
+# Template for ~/.zshrc.local. Copy, then edit:
+#
+#   cp setup/zshrc.local.example ~/.zshrc.local
+#
+# The real file is gitignored and sourced LAST by ~/.zshrc, so anything here
+# wins over every conf.d module.
+#
+# Use it for machine-specific things that should not be in a public repo:
+# client paths, work-only aliases, one-off PATH entries.
+
+# ─── API keys ────────────────────────────────────────────────────────────────
+# The tools that need auth manage their own (gh, Claude Code, Codex all store
+# OAuth tokens themselves). If a script ever needs a raw key, this file is
+# where it goes. It is gitignored and never leaves this machine:
+#
+#   export OPENAI_API_KEY="sk-..."
+#
+# It is still a plaintext file. Keep it chmod 600 and never `git add -f` it.
+
+# ─── Examples ────────────────────────────────────────────────────────────────
+
+# Extra PATH entry (the guard keeps a missing directory out of PATH):
+# [[ -d "$HOME/clients/acme/bin" ]] && path=("$HOME/clients/acme/bin" $path)
+
+# Machine-specific alias:
+# alias vpn="sudo openconnect --user=me vpn.example.com"
+
+# Override a default set in conf.d:
+# export EDITOR=nvim

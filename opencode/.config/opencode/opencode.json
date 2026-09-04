@@ -1,0 +1,95 @@
+{
+  "plugin": [
+    "opencode-openai-codex-auth",
+    "opencode-claude-auth@latest",
+    "oh-my-openagent@latest"
+  ],
+  "instructions": [
+    "~/.agents/AGENTS.md"
+  ],
+  "provider": {
+    "anthropic": {
+      "models": {
+        "claude-opus-5": {
+          "limit": {
+            "context": 1000000,
+            "input": 420000,
+            "output": 128000
+          }
+        },
+        "claude-fable-5": {
+          "limit": {
+            "context": 1000000,
+            "input": 420000,
+            "output": 128000
+          }
+        },
+        "claude-fable-5-1": {
+          "limit": {
+            "context": 1000000,
+            "input": 420000,
+            "output": 128000
+          }
+        },
+        "claude-sonnet-5": {
+          "limit": {
+            "context": 1000000,
+            "input": 320000,
+            "output": 128000
+          }
+        },
+        "claude-haiku-4-5": {
+          "limit": {
+            "context": 200000,
+            "input": 170000,
+            "output": 64000
+          }
+        }
+      }
+    },
+    "openai": {
+      "models": {
+        "gpt-5.6-sol": {
+          "limit": {
+            "context": 1050000,
+            "input": 420000,
+            "output": 128000
+          }
+        },
+        "gpt-5.6-terra": {
+          "limit": {
+            "context": 1050000,
+            "input": 320000,
+            "output": 128000
+          }
+        },
+        "gpt-5.6-luna": {
+          "limit": {
+            "context": 1050000,
+            "input": 270000,
+            "output": 128000
+          }
+        },
+        "gpt-5.6-luna-fast": {
+          "limit": {
+            "context": 1050000,
+            "input": 270000,
+            "output": 128000
+          }
+        }
+      }
+    }
+  },
+  "compaction": {
+    "auto": true,
+    "prune": true,
+    "reserved": 20000,
+    "preserve_recent_tokens": 50000
+  },
+  "agent": {
+    "compaction": {
+      "model": "openai/gpt-5.6-sol"
+    }
+  },
+  "$schema": "https://opencode.ai/config.json"
+}

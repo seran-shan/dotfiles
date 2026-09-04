@@ -1,0 +1,45 @@
+# Cursor extensions. Install with: just editors-ext
+#
+# Captured from ~/.cursor/extensions. The old repo carried a 50-line
+# vscode_extensions.txt, but VS Code currently has 0 extensions installed
+# while Cursor has these. That list was stale, so this replaces it.
+
+anthropic.claude-code
+anysphere.cursorpyright
+anysphere.remote-containers
+anysphere.remote-ssh
+astral-sh.ty
+biomejs.biome
+charliermarsh.ruff
+denoland.vscode-deno
+dotjoshjohnson.xml
+eamodio.gitlens
+elagil.pre-commit-helper
+esbenp.prettier-vscode
+extensions.json
+github.vscode-github-actions
+github.vscode-pull-request-github
+golang.go
+hashicorp.terraform
+jackiotyu.git-worktree-manager
+james-yu.latex-workshop
+mechatroner.rainbow-csv
+ms-dotnettools.csharp
+ms-kubernetes-tools.vscode-kubernetes-tools
+ms-python.debugpy
+ms-python.python
+ms-toolsai.datawrangler
+ms-toolsai.jupyter
+ms-toolsai.jupyter-renderers
+ms-toolsai.vscode-jupyter-cell-tags
+ms-toolsai.vscode-jupyter-slideshow
+ms-vscode.makefile-tools
+ms-vsliveshare.vsliveshare
+openai.chatgpt
+prisma.prisma
+redhat.vscode-yaml
+sst-dev.opencode
+svelte.svelte-vscode
+tamasfe.even-better-toml
+tomoki1207.pdf
+vscodevim.vim

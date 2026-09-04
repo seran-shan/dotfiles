@@ -1,0 +1,49 @@
+# Template for ~/.gitconfig.local. Copy, then edit:
+#
+#   cp setup/gitconfig.local.example ~/.gitconfig.local
+#
+# The real file is gitignored. ~/.gitconfig pulls it in with [include], so
+# anything here overrides or extends the committed configuration.
+#
+# WHY IDENTITY LIVES HERE rather than in the committed .gitconfig: a work
+# machine needs a different email, and the signing key path is machine-local.
+# This is the same split nicksp, thoughtbot and paulirish use.
+
+[user]
+	name = Seran Shanmugathas
+	email = seran@live.no
+
+	# Path to your PUBLIC key. ~/.gitconfig sets gpg.format = ssh, but
+	# does not enable signing; see the [commit] block below.
+	signingkey = ~/.ssh/id_ed25519.pub
+
+# Enable signing ONLY once signingkey above is set and the key is uploaded to
+# GitHub. Turning this on without a signingkey makes git refuse every commit:
+#   fatal: either user.signingkey or gpg.ssh.defaultKeyCommand needs to be configured
+[commit]
+	gpgsign = true
+
+[tag]
+	gpgsign = true
+
+# ─── One-time signing setup ──────────────────────────────────────────────────
+# 1. Register your own key so local `git log --show-signature` verifies:
+#
+#      mkdir -p ~/.config/git
+#      printf '%s namespaces="git" %s\n' \
+#        "$(git config user.email)" "$(cat ~/.ssh/id_ed25519.pub)" \
+#        >> ~/.config/git/allowed_signers
+#
+# 2. Upload the same public key to GitHub a SECOND time, with key type
+#    "Signing Key". An existing Authentication Key does not sign.
+#      https://github.com/settings/keys
+#
+# 3. Verify it works:
+#      git commit --allow-empty -m "test: signing"
+#      git log --show-signature -1        # expect "Good \"git\" signature"
+
+# ─── Optional: per-directory work identity ───────────────────────────────────
+# For a separate work email without touching this file, add to ~/.gitconfig:
+#
+#   [includeIf "gitdir:~/work/"]
+#       path = ~/.gitconfig.work

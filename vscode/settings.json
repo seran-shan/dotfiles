@@ -1,0 +1,177 @@
+{
+  "accessibility.signals.chatRequestSent": {
+    "announcement": "auto",
+    "sound": "off"
+  },
+  "accessibility.signals.chatResponseReceived": {
+    "sound": "off"
+  },
+  "accessibility.signals.clear": {
+    "announcement": "auto",
+    "sound": "off"
+  },
+  "accessibility.signals.codeActionApplied": {
+    "sound": "off"
+  },
+  "accessibility.signals.codeActionTriggered": {
+    "sound": "off"
+  },
+  "accessibility.signals.diffLineDeleted": {
+    "sound": "off"
+  },
+  "accessibility.signals.diffLineInserted": {
+    "sound": "off"
+  },
+  "accessibility.signals.diffLineModified": {
+    "sound": "off"
+  },
+  "accessibility.signals.lineHasBreakpoint": {
+    "announcement": "auto",
+    "sound": "off"
+  },
+  "accessibility.signals.lineHasError": {
+    "announcement": "auto",
+    "sound": "off"
+  },
+  "accessibility.signals.lineHasFoldedArea": {
+    "announcement": "auto",
+    "sound": "off"
+  },
+  "accessibility.signals.lineHasInlineSuggestion": {
+    "sound": "off"
+  },
+  "accessibility.signals.lineHasWarning": {
+    "announcement": "auto",
+    "sound": "off"
+  },
+  "accessibility.signals.noInlayHints": {
+    "announcement": "auto",
+    "sound": "off"
+  },
+  "accessibility.signals.notebookCellCompleted": {
+    "announcement": "auto",
+    "sound": "off"
+  },
+  "accessibility.signals.notebookCellFailed": {
+    "announcement": "auto",
+    "sound": "off"
+  },
+  "accessibility.signals.onDebugBreak": {
+    "announcement": "auto",
+    "sound": "off"
+  },
+  "accessibility.signals.positionHasError": {
+    "announcement": "auto",
+    "sound": "off"
+  },
+  "accessibility.signals.positionHasWarning": {
+    "announcement": "auto",
+    "sound": "off"
+  },
+  "accessibility.signals.progress": {
+    "announcement": "auto",
+    "sound": "off"
+  },
+  "accessibility.signals.taskCompleted": {
+    "sound": "off"
+  },
+  "accessibility.signals.taskFailed": {
+    "sound": "off"
+  },
+  "accessibility.signals.terminalBell": {
+    "announcement": "auto",
+    "sound": "off"
+  },
+  "accessibility.signals.terminalCommandFailed": {
+    "sound": "off"
+  },
+  "accessibility.signals.terminalCommandSucceeded": {
+    "sound": "off"
+  },
+  "accessibility.signals.terminalQuickFix": {
+    "announcement": "auto",
+    "sound": "off"
+  },
+  "accessibility.signals.voiceRecordingStarted": {
+    "sound": "off"
+  },
+  "accessibility.signals.voiceRecordingStopped": {
+    "sound": "off"
+  },
+  "editor.accessibilitySupport": "off",
+  "editor.autoClosingBrackets": "always",
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit"
+  },
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.inlayHints.enabled": "offUnlessPressed",
+  "editor.inlineSuggest.enabled": true,
+  "editor.renderWhitespace": "all",
+  "editor.suggest.preview": true,
+  "editor.suggestSelection": "first",
+  "eslint.format.enable": true,
+  "eslint.validate": ["javascript", "typescript"],
+  "eslint.workingDirectories": [
+    {
+      "pattern": "./**/*"
+    }
+  ],
+  "git.autofetch": true,
+  "git.enableSmartCommit": true,
+  "git.mergeEditor": true,
+  "jupyter.askForKernelRestart": false,
+  "liveServer.settings.donotShowInfoMsg": true,
+  "prisma.showPrismaDataPlatformNotification": false,
+  "redhat.telemetry.enabled": false,
+  "security.workspace.trust.untrustedFiles": "open",
+  "svelte.enable-ts-plugin": true,
+  "svelte.plugin.css.diagnostics.enable": false,
+  "svelte.plugin.svelte.note-new-transformation": false,
+  "svg.preview.mode": "svg",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[less]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[mdx]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[postcss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[python]": {
+    "editor.formatOnType": true
+  },
+  "[svelte]": {
+    "editor.defaultFormatter": "svelte.svelte-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[xml]": {
+    "editor.defaultFormatter": "DotJoshJohnson.xml"
+  },
+  "claudeCode.selectedModel": "default"
+}

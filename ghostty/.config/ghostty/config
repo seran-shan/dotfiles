@@ -1,0 +1,79 @@
+# Ghostty configuration
+# Reference: https://ghostty.org/docs/config
+# Validate after editing:  ghostty +show-config
+#
+# Authored from scratch; no Ghostty config existed on this machine.
+
+# ─── Font ────────────────────────────────────────────────────────────────────
+# JetBrainsMono Nerd Font is installed by the Brewfile. The Nerd Font variant
+# matters: LazyVim's file tree, git signs and statusline use glyphs from the
+# Nerd Font private-use range, which render as empty boxes without it.
+# Menlo is listed as fallback so a fresh machine is still legible before
+# `just brew` has run.
+font-family = JetBrainsMono Nerd Font
+font-family = Menlo
+font-size = 14
+font-thicken = true
+
+# ─── Theme ───────────────────────────────────────────────────────────────────
+# Ships with Ghostty; no external file needed. `ghostty +list-themes` for more.
+theme = Catppuccin Mocha
+background-opacity = 1.0
+
+# ─── Window ──────────────────────────────────────────────────────────────────
+window-padding-x = 10
+window-padding-y = 8
+window-padding-balance = true
+window-save-state = always
+window-colorspace = display-p3
+macos-titlebar-style = tabs
+
+# ─── Cursor ──────────────────────────────────────────────────────────────────
+cursor-style = block
+cursor-style-blink = false
+# Dim the whole surface when it loses focus, so the active split is obvious.
+unfocused-split-opacity = 0.85
+
+# ─── Scrollback ──────────────────────────────────────────────────────────────
+scrollback-limit = 10000000
+
+# ─── macOS behaviour ─────────────────────────────────────────────────────────
+# Left Option as Alt makes Alt-W (kill-region, bound in zsh conf.d/40-keys.zsh)
+# reachable, while the right Option still types accented characters.
+macos-option-as-alt = left
+macos-non-native-fullscreen = true
+
+# Automatically sources Ghostty's zsh integration: window titles, prompt
+# marking, and working-directory inheritance for new splits and tabs.
+shell-integration = zsh
+shell-integration-features = cursor,sudo,title
+
+# ─── Clipboard ───────────────────────────────────────────────────────────────
+copy-on-select = clipboard
+clipboard-trim-trailing-spaces = true
+# Require confirmation when pasting text containing newlines. A paste that
+# executes immediately is a real footgun.
+clipboard-paste-protection = true
+
+# ─── Keybindings ─────────────────────────────────────────────────────────────
+# Splits
+keybind = cmd+d=new_split:right
+keybind = cmd+shift+d=new_split:down
+keybind = cmd+opt+left=goto_split:left
+keybind = cmd+opt+right=goto_split:right
+keybind = cmd+opt+up=goto_split:up
+keybind = cmd+opt+down=goto_split:down
+keybind = cmd+shift+enter=toggle_split_zoom
+
+# Tabs
+keybind = cmd+t=new_tab
+keybind = cmd+shift+left=previous_tab
+keybind = cmd+shift+right=next_tab
+
+# Config reload without restarting
+keybind = cmd+shift+r=reload_config
+
+# ─── Misc ────────────────────────────────────────────────────────────────────
+confirm-close-surface = false
+quit-after-last-window-closed = false
+auto-update = check

@@ -1,0 +1,30 @@
+# Global npm packages. Install with `just tools`.
+#
+# CURATED, not generated. This follows nicksp's approach: a hand-maintained
+# list rather than a `pnpm list --global | jq` export.
+# A generated list faithfully reproduces cruft; a curated one states intent.
+# `just tools-check` reports drift between this file and what is installed.
+#
+# WHY THESE ARE NOT IN THE BREWFILE:
+# No Homebrew formula exists for any of them (verified with `brew info`).
+# wrangler and prisma additionally need to track the version a project pins,
+# which a single global brew copy cannot do.
+#
+# Lines starting with # are ignored, as are blank lines.
+
+# ─── AI tooling ──────────────────────────────────────────────────────────────
+@openai/codex
+
+# ─── Cloud and database ──────────────────────────────────────────────────────
+wrangler
+prisma
+
+# ─── Browser automation ──────────────────────────────────────────────────────
+playwright
+playwright-extra
+puppeteer-extra-plugin-stealth
+puppeteer-extra-plugin-user-data-dir
+puppeteer-extra-plugin-user-preferences
+
+# ─── MOVED TO HOMEBREW ───────────────────────────────────────────────────────
+# @biomejs/biome  ->  brew "biome"      (real formula, no per-project pinning)

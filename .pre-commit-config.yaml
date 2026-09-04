@@ -1,0 +1,70 @@
+# Pre-commit hooks. Install once with `just hooks`.
+#
+# This repository is public, so a leaked key is public the moment it is pushed.
+# These hooks are the last automated gate before that happens.
+
+repos:
+  # ─── Secret scanning ───────────────────────────────────────────────────────
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.30.1
+    hooks:
+      # `gitleaks-system` (language: system) runs the Homebrew-installed
+      # binary. The plain `gitleaks` hook is language: golang, which makes
+      # pre-commit compile gitleaks from source into its own cache, which is slow and
+      # it needs a Go toolchain. gitleaks is already in the Brewfile.
+      - id: gitleaks-system
+        # Upstream omits this on the -system variant only (the golang and
+        # docker variants have it). Without it, `pre-commit run --all-files`
+        # passes every path as an argument and `gitleaks git` accepts one.
+        pass_filenames: false
+
+  # ─── General correctness ───────────────────────────────────────────────────
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: check-added-large-files
+        args: [--maxkb=512]
+      - id: check-merge-conflict
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+        args: [--markdown-linebreak-ext=md]
+      - id: check-yaml
+      - id: check-toml
+      - id: check-json
+        # VS Code and Cursor settings are JSONC (comments + trailing commas),
+        # which this strict JSON parser rejects. They are validated by
+        # `just doctor` instead.
+        exclude: ^(cursor|vscode)/
+      # Blocks committing an actual private key, independently of gitleaks
+      # and of the .gitignore allowlist. Three overlapping defences.
+      - id: detect-private-key
+
+  # ─── Shell ─────────────────────────────────────────────────────────────────
+  # koalaman/shellcheck-precommit is a DOCKER hook: it needs a running daemon
+  # to lint two scripts. The Homebrew binary is used instead, like gitleaks
+  # and prettier above.
+  - repo: local
+    hooks:
+      - id: shellcheck
+        name: shellcheck
+        entry: shellcheck
+        language: system
+        types: [shell]
+        # zsh module files are not sh/bash; shellcheck cannot parse zsh
+        # constructs such as `(( $+commands[x] ))` or glob qualifiers.
+        exclude: ^zsh/
+
+  # ─── Markdown ──────────────────────────────────────────────────────────────
+  # Prose is one paragraph per line (.prettierrc: proseWrap never). Renderers
+  # reflow text themselves; hard-wrapping at 80 columns only makes every
+  # one-word edit show up as a rewrapped paragraph in the diff.
+  #
+  # Runs the Homebrew prettier for the same reason gitleaks-system does: the
+  # pre-commit/mirrors-prettier repo is archived and only ships v4 alphas.
+  - repo: local
+    hooks:
+      - id: prettier-markdown
+        name: prettier (markdown)
+        entry: prettier --write
+        language: system
+        types: [markdown]

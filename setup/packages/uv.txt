@@ -1,0 +1,10 @@
+# Python tools installed with `uv tool install`. Applied by `just tools`.
+#
+# uv tools live in isolated virtualenvs, so these never pollute a project's
+# dependency tree. No Homebrew formula exists for either.
+
+# MCP server exposing Apple Health export data. Was v0.1.1.
+apple-health-export-mcp
+
+# Snyk agent-based scanning. Was v0.5.9.
+snyk-agent-scan

@@ -1,0 +1,73 @@
+# Codex CLI / desktop configuration. PORTABLE PREFERENCES ONLY.
+#
+# THIS FILE IS COPIED, NEVER SYMLINKED (`just sync`). Codex rewrites its own
+# config at runtime; a symlink here would mean the app writing machine state
+# straight back into the git worktree on every launch.
+#
+# The live ~/.codex/config.toml is 112 lines. Roughly 80% of it is generated
+# and not reproduced here:
+#
+#   [projects."/abs/path"]           8 blocks of per-directory trust state.
+#                                    Also leaks local project names publicly.
+#   [marketplaces.*]                 absolute cache paths + last_updated stamps
+#   [mcp_servers.node_repl]          absolute paths into /Applications/ChatGPT.app
+#                                    plus a pinned app build (26.831.21537)
+#   [shell_environment_policy.set]   SHA-256 allowlist tied to that build
+#   [tui.model_availability_nux]     UI "seen this notice" counter
+#   [desktop...perPath]              per-directory editor overrides
+#   notify = [...]                   absolute path containing the username
+#
+# Re-applying this file leaves all of the above untouched; Codex regenerates
+# them on its own.
+
+model = "gpt-5.6-sol"
+model_reasoning_effort = "xhigh"
+personality = "pragmatic"
+
+# ─── Desktop UI preferences ──────────────────────────────────────────────────
+[desktop]
+usePointerCursors = false
+git-branch-prefix = ""
+keepRemoteControlAwakeWhilePluggedIn = true
+followUpQueueMode = "queue"
+dock-icon-preference = "app-default"
+conversationDetailMode = "STEPS_PROSE"
+preventSleepWhileRunning = true
+
+[desktop.open-in-target-preferences]
+global = "cursor"
+
+# ─── Features ────────────────────────────────────────────────────────────────
+[features]
+js_repl = false
+
+# ─── Plugins ─────────────────────────────────────────────────────────────────
+[plugins."github@openai-curated"]
+enabled = true
+
+[plugins."documents@openai-primary-runtime"]
+enabled = true
+
+[plugins."spreadsheets@openai-primary-runtime"]
+enabled = true
+
+[plugins."presentations@openai-primary-runtime"]
+enabled = true
+
+[plugins."pdf@openai-primary-runtime"]
+enabled = true
+
+[plugins."template-creator@openai-primary-runtime"]
+enabled = true
+
+[plugins."visualize@openai-bundled"]
+enabled = true
+
+[plugins."browser@openai-bundled"]
+enabled = true
+
+[plugins."codex-app-tools@openai-bundled"]
+enabled = true
+
+[plugins."unified-computer-use@openai-bundled"]
+enabled = true

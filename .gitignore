@@ -1,0 +1,83 @@
+# ─── SSH: allowlist. config only, never key material ─────────────────────────
+# Deny everything under any .ssh/, then re-admit only the config file.
+# A newly generated key therefore cannot leak by default.
+ssh/.ssh/*
+!ssh/.ssh/config
+# config.local is Included by config and holds real hosts. Never re-admitted.
+!ssh/.ssh/config.d/
+ssh/.ssh/config.d/*
+!ssh/.ssh/config.d/*.conf
+
+# ─── Credentials and auth tokens: never ──────────────────────────────────────
+**/auth.json
+**/.credentials.json
+**/credentials
+**/cli-config.json
+*.pem
+*.key
+# No `!*.pub` re-admit here: it would override the SSH allowlist
+# above and let a public key into the repo. Public keys are not secret, but
+# they are a stable identity fingerprint and the allowlist means "config only".
+
+# ─── AI tool runtime state: privacy and repo bloat ───────────────────────────
+# ~/.claude/history.jsonl alone is ~986 KB of conversation history.
+**/history.jsonl
+**/transcripts/
+**/sessions/
+**/projects/
+**/memories/
+**/*.sqlite
+**/*.sqlite3
+**/*.sqlite-shm
+**/*.sqlite-wal
+
+# ─── Machine-local overrides: sourced at runtime, never committed ─────────────
+# Committed counterparts live beside these as *.example files.
+.zshrc.local
+.gitconfig.local
+*.local.zsh
+# (the *.example templates for these live in setup/ and ARE committed)
+.envrc
+
+# ─── Tool-dir layout hazard guard ────────────────────────────────────────────
+# Every file inside a named stow package gets deployed to $HOME. A stray
+# editor backup would land as ~/.zshrc.bak, so block them at the repo edge.
+*.bak
+*.bak.*
+*.orig
+*.rej
+*~
+*.swp
+*.swo
+
+# ─── Caches, build output, dependency trees ──────────────────────────────────
+node_modules/
+**/node_modules/
+bun.lock
+package-lock.json
+pnpm-lock.yaml
+**/cache/
+**/caches/
+**/backups/
+**/debug/
+**/logs/
+*.log
+
+# ─── macOS noise ─────────────────────────────────────────────────────────────
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# ─── Neovim runtime (plugins live in ~/.local/share/nvim, not here) ──────────
+nvim/.config/nvim/lazyvim.json
+nvim/.config/nvim/.neoconf.json
+nvim/.config/nvim/spell/
+
+# NOTE: nvim/.config/nvim/lazy-lock.json IS committed on purpose.
+# lazy.nvim docs: "It is recommended to have this file under version control."
+
+# ─── Local planning artifacts ────────────────────────────────────────────────
+.omo/

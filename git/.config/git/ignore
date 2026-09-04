@@ -1,0 +1,42 @@
+# Global gitignore. Applies to every repository on this machine.
+# Wired up via core.excludesfile in ~/.gitconfig.
+#
+# Keep this list to things that are a property of the MACHINE or EDITOR, never
+# a property of a project. Project-specific ignores belong in that project's
+# own .gitignore so collaborators get them too.
+
+# ─── macOS ───────────────────────────────────────────────────────────────────
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+
+# ─── Editors and IDEs ────────────────────────────────────────────────────────
+*.swp
+*.swo
+*~
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+!.vscode/launch.json
+.nvim.lua
+.neoconf.json
+
+# ─── Local environment and secrets ───────────────────────────────────────────
+# .envrc is direnv's per-project file. It frequently holds credentials and
+# must never be committed by accident.
+.envrc
+.direnv/
+.env.local
+.env.*.local
+
+# ─── Tooling caches ──────────────────────────────────────────────────────────
+.ruff_cache/
+.mypy_cache/
+.pytest_cache/
+__pycache__/
+.turbo/
